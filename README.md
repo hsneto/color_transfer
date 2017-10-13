@@ -18,7 +18,7 @@ This is an C++ approach from the above methods, for more information I recommend
 
 ### Installing
 
-Just download this github and use the header file `color_transfer.hpp` contained in the color_transfer folder.
+Just download this repository and use the header file `color_transfer.hpp` contained in the color_transfer folder.
 
 
 ## Running the tests

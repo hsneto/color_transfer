@@ -14,21 +14,23 @@ int main(int argc, char* argv[]) {
     auto&& options = description.add_options();
     options("help,", "show available options");
     options("scr,s", po::value<string>(&source), "source image");
-    options("tar,t", po::value<string>(&target), "target image");
+    options("tgt,t", po::value<string>(&target), "target image");
     options("path,p", po::value<string>(&path)->default_value("NULL"), "path to save");
     
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, description), vm);
     po::notify(vm);
   
-    if (vm.count("help") || !vm.count("scr") || !vm.count("tar")) {
+    if (vm.count("help") || !vm.count("scr") || !vm.count("tgt")) {
       cout << description << endl;
       return 1;
     }
 
     Mat image = imread(source);
     Mat image2 = imread(target);
-    Mat result = colorTransfer(image.clone(), image2.clone());
+    
+    Mat result; 
+    colorTransfer(image, image2, result);
     
     imshow("Result", result);
     waitKey(0);

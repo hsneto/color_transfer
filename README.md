@@ -45,7 +45,7 @@ A example is in sample folder. After compiling it, run the code below
 
 ## License
 
-Still trying to undertand how to make one 
+[MIT LICENSE](https://github.com/hsneto/color_transfer/blob/master/LICENSE)
 
 
 ## Acknowledgments

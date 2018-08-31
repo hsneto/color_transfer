@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
     po::options_description description("Allowed options");
     auto&& options = description.add_options();
     options("help,", "show available options");
-    options("scr,s", po::value<string>(&source), "source image");
+    options("src,s", po::value<string>(&source), "source image");
     options("tgt,t", po::value<string>(&target), "target image");
     options("path,p", po::value<string>(&path)->default_value("NULL"), "path to save");
     
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     po::store(po::parse_command_line(argc, argv, description), vm);
     po::notify(vm);
   
-    if (vm.count("help") || !vm.count("scr") || !vm.count("tgt")) {
+    if (vm.count("help") || !vm.count("src") || !vm.count("tgt")) {
       cout << description << endl;
       return 1;
     }

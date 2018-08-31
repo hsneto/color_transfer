@@ -37,6 +37,16 @@ A example is in sample folder. After compiling it, run the code below
 <code>$ ./color_transfer -s ../images/florest_day.jpg -t ../images/florest_dark.jpg</code>
 ![alt text](https://github.com/Humberto-Neto/color_transfer/blob/master/docs/images/Results4.png)
 
+### With docker
+
+```
+xhost +local:docker
+XSOCK=/tmp/.X11-unix
+XAUTH=/tmp/.docker.xauth
+xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+docker container run --rm -ti -e DISPLAY=$DISPLAY -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH -v /home/${USER}/${FOLDER}/:/lab/images/ hsneto/color_transfer ./transfer -s images/${src_image} -t images/${tgt_image} -p images/${output_image}
+xhost -local:docker
+```
 
 ## Authors
 

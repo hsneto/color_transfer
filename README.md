@@ -44,14 +44,21 @@ xhost +local:docker
 XSOCK=/tmp/.X11-unix
 XAUTH=/tmp/.docker.xauth
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
-docker container run --rm -ti -e DISPLAY=$DISPLAY -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH -v /home/${USER}/${FOLDER}/:/lab/images/ hsneto/color_transfer ./transfer -s images/${src_image} -t images/${tgt_image} -p images/${output_image}
+
+docker container run --rm -ti \
+-e DISPLAY=$DISPLAY \
+-v $XSOCK:$XSOCK \
+-v $XAUTH:$XAUTH \
+-e XAUTHORITY=$XAUTH \
+-v /home/${USER}/${FOLDER}/:/lab/images/ 
+hsneto/color_transfer ./transfer -s images/${src_image} -t images/${tgt_image} -p images/${output_image}
+
 xhost -local:docker
 ```
 
 ## Authors
 
 * **Humberto da Silva Neto** - *Initial work*
-
 
 ## License
 
